@@ -28,7 +28,7 @@ jobs:
           for status in $(curl \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: token ${{ github.token }}" \
-            "https://github.com/api/v3/repos/sebastiaopamplona/continue-on-error-hack/actions/runs/${{ github.run_id }}/jobs" | jq -r ".jobs[] | .conclusion")
+            "https://api.github.com/repos/sebastiaopamplona/continue-on-error-hack/actions/runs/${{ github.run_id }}/jobs" | jq -r ".jobs[] | .conclusion")
             do
               if [ ${status} == "failure" ]
               then
